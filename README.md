@@ -6,4 +6,8 @@ Project 2 10/1/2020 - 10/1/2020
 
 Project 3 10/1/2020 - 10/1/2020
 
-Project 4
+Project 4 10/1/2020 - 10/2/2020
+
+### From here on out I will also be rebuilding the HTML & CSS, not just the app.js file
+
+Project 5 10/2/2020 - ?
