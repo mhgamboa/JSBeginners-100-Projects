@@ -1,64 +1,84 @@
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+}
+
+.all {
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
 
 body {
   width: 100vw;
   height: 100vh;
-  margin: 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: rgba(54, 201, 238, 0.671);
+  overflow: hidden;
+  /* background: url(../img/contBcg-0.jpeg) center/cover; */
 }
 
-.button {
-  --button-width: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border: black solid 1px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
-  width: var(--button-width);
-  background-color: rgba(255, 255, 255, 0.541);
-  -webkit-transition: 1000ms;
-  transition: 1000ms;
-}
-
-.button:hover {
+.fas {
+  font-size: 4em;
+  position: absolute;
+  top: 45%;
   cursor: pointer;
-  background-color: rgba(202, 202, 202, 0.952);
-  -webkit-transition: 500ms;
-  transition: 500ms;
+  background-color: rgba(196, 196, 196, 0.575);
+  padding: 10px;
+  border-radius: 30px;
+  transition-duration: 500ms;
 }
 
-.button .arrow {
-  font-size: 3em;
+/* Left Arrow */
+
+.left-hover-area {
+  position: absolute;
+  width: 5em;
+  height: 30vh;
+  top: 38%;
+  left: 0px;
+  z-index: 1;
+  cursor: pointer;
 }
 
-#right-button {
-  position: fixed;
-  right: 0;
-  -webkit-transform: translateX(1.2em);
-          transform: translateX(1.2em);
+.fa-angle-left {
+  left: 2vw;
+  transform: translateX(-3em);
+  animation-duration: 2000ms;
+  animation-name: left-intro;
 }
 
-#left-button {
-  position: fixed;
-  left: 0;
+@keyframes left-intro {
+  50% {
+    left: 320px;
+  }
 }
 
-.transform-right {
-  -webkit-transform: translateX(3.2em);
-          transform: translateX(3.2em);
+/* Right Arrow */
+.right-hover-area {
+  position: absolute;
+  width: 5em;
+  height: 30vh;
+  top: 38%;
+  right: 0px;
+  z-index: 1;
+  cursor: pointer;
 }
-/*# sourceMappingURL=style.css.map */
+
+.fa-angle-right {
+  right: 2vw;
+  transform: translateX(3em);
+  animation-duration: 2000ms;
+  animation-name: right-intro;
+}
+
+@keyframes right-intro {
+  50% {
+    right: 320px;
+  }
+}
+
+/* Transform class for both arrows */
+
+.transform {
+  transform: translateX(0);
+}
