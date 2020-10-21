@@ -4,23 +4,81 @@
   padding: 0px;
 }
 
-/* :root {
-  
-} */
+:root {
+  --dark-orange: #f15025;
+}
 
 body {
   background: url(../img/questionBcg.jpeg) center/cover fixed;
+  height: 100vh;
+}
+
+.background-overlay {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 100vh;
-}
-
-.dark-orange {
-  color: #f15025;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .white {
   color: white;
+}
+
+h3 {
+  color: var(--dark-orange);
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Start quote box with arrows */
+.quote-slider {
+  display: flex;
+  align-items: center;
+}
+
+.fas {
+  color: var(--dark-orange);
+  margin: 10px;
+}
+
+.quote-box {
+  border: white 1px solid;
+  height: 65vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgba(0, 0, 0, 0.39);
+  color: white;
+}
+
+/* Inside the box */
+.client-image {
+  height: 100px;
+  width: 18vw;
+  border-radius: 50%;
+  margin-top: -55px;
+}
+
+.client-name {
+  font-size: 2em;
+}
+
+.client-stars {
+  color: var(--dark-orange);
+  font-size: 1.3em;
+}
+
+.client-review {
+  font-size: 1.1em;
+}
+
+.fa-quote-left {
+  font-size: 2em;
 }
