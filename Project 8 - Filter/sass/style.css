@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Kaushan Script", cursive;
+  font-size: 19px;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.75rem;
+  height: 10vh;
+  min-height: 58px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+nav ul li {
+  padding: 0.75rem;
+  list-style-type: none;
+}
+
+nav ul li a {
+  color: #ef7998;
+  text-decoration: none;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+nav ul li a:hover {
+  color: black;
+}
+
+@media only screen and (max-width: 768px) {
+  nav .phone-container {
+    display: none;
+  }
+}
+
+nav button {
+  padding: 10px;
+  background-color: white;
+  border: solid black 1.5px;
+  border-radius: 10px;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+nav button:hover {
+  color: white;
+  background-color: #ef7998;
+  border: solid #ef7998 1.5px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  nav button {
+    display: none;
+  }
+}
+
+nav .fa-bars {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  nav .fa-bars {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #ef7998;
+  }
+}
+
+.banner {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(249, 228, 148, 0.5)), to(rgba(249, 228, 148, 0.5))), url("../img/headerBcg.jpeg") center/cover fixed no-repeat;
+  background: linear-gradient(rgba(249, 228, 148, 0.5), rgba(249, 228, 148, 0.5)), url("../img/headerBcg.jpeg") center/cover fixed no-repeat;
+  height: 90vh;
+  margin-top: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.banner .banner-text,
+.banner button {
+  text-align: center;
+  margin: 10px;
+}
+
+.banner .banner-text .white {
+  color: white;
+  font-size: 3rem;
+}
+
+.banner .banner-text .pink {
+  color: #ef7998;
+  font-size: 4rem;
+}
+
+.banner button {
+  padding: 10px;
+  background: none;
+  border: black 3px solid;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.banner button:hover {
+  color: #ef7998;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.about-us-container {
+  height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.about-us-container .about-us-image-container,
+.about-us-container .about-us-blurb {
+  height: 100%;
+  width: 50%;
+  min-width: 330px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 10px;
+}
+
+.about-us-container .about-us-blurb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+.about-us-container .about-us-blurb > * {
+  margin: 10px;
+}
+
+.about-us-container .about-us-blurb h3 .about {
+  font-size: 2.5rem;
+}
+
+.about-us-container .about-us-blurb h3 .us {
+  font-size: 4rem;
+  color: #ef7998;
+}
+
+.about-us-container .about-us-blurb .lorem {
+  color: #6c757d;
+}
+
+.about-us-container .about-us-blurb button {
+  padding: 10px;
+  border: solid 1px black;
+  border-radius: 10px;
+  background: none;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.about-us-container .about-us-blurb button:hover {
+  background: black;
+  color: #ef7998;
+  cursor: pointer;
+}
+
+.about-us-container .about-us-image-container {
+  background: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.about-us-container .about-us-image-container img {
+  width: 85%;
+  height: auto;
+  outline: solid 10px #f9e494;
+}
+/*# sourceMappingURL=style.css.map */

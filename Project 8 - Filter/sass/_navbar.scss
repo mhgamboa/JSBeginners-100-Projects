@@ -1,0 +1,67 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  height: 10vh;
+  min-height: 58px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    @include mq(768px) {
+    }
+    li {
+      padding: 0.75rem;
+      list-style-type: none;
+
+      a {
+        color: $pink-color;
+        text-decoration: none;
+        transition-duration: 300ms;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+
+  .phone-container {
+    @include mq(768px) {
+      display: none;
+    }
+  }
+
+  button {
+    padding: 10px;
+    background-color: white;
+    border: solid black 1.5px;
+    border-radius: 10px;
+    transition-duration: 300ms;
+
+    &:hover {
+      color: white;
+      background-color: $pink-color;
+      border: solid $pink-color 1.5px;
+      cursor: pointer;
+    }
+
+    @include mq(768px) {
+      display: none;
+    }
+  }
+
+  .fa-bars {
+    display: none;
+    @include mq(768px) {
+      display: inline-block;
+      font-size: 1.5rem;
+      color: $pink-color;
+    }
+  }
+}

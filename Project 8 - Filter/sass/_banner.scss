@@ -1,0 +1,43 @@
+.banner {
+  background: linear-gradient($yellowTrans, $yellowTrans),
+    url("../img/headerBcg.jpeg") center/cover fixed no-repeat;
+  height: 90vh;
+  margin-top: 10vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .banner-text,
+  button {
+    text-align: center;
+    margin: 10px;
+  }
+
+  .banner-text {
+    .white {
+      color: white;
+      font-size: 3rem;
+    }
+    .pink {
+      color: $pink-color;
+      font-size: 4rem;
+    }
+  }
+
+  button {
+    padding: 10px;
+    background: none;
+    border: black 3px solid;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    transition-duration: 300ms;
+
+    &:hover {
+      color: $pink-color;
+      background-color: #000;
+      cursor: pointer;
+    }
+  }
+}

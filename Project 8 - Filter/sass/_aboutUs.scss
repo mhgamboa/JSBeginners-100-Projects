@@ -1,0 +1,67 @@
+.about-us-container {
+  height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .about-us-image-container,
+  .about-us-blurb {
+    height: 100%;
+    width: 50%;
+    min-width: 330px;
+    flex-grow: 1;
+    padding: 10px;
+  }
+
+  .about-us-blurb {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: start;
+
+    > * {
+      margin: 10px;
+    }
+
+    h3 {
+      .about {
+        font-size: 2.5rem;
+      }
+
+      .us {
+        font-size: 4rem;
+        color: $pink-color;
+      }
+    }
+
+    .lorem {
+      color: #6c757d;
+    }
+
+    button {
+      padding: 10px;
+      border: solid 1px black;
+      border-radius: 10px;
+      background: none;
+      transition-duration: 300ms;
+
+      &:hover {
+        background: black;
+        color: $pink-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .about-us-image-container {
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 85%;
+      height: auto;
+      outline: solid 10px #f9e494;
+    }
+  }
+}

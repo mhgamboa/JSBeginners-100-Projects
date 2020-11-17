@@ -1,0 +1,22 @@
+// Curly Font
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+$pink-color: #ef7998;
+$mainYellow: rgb(249, 228, 148);
+$yellowTrans: rgba(249, 228, 148, 0.5);
+$mainGrey: rgb(238, 238, 238);
+$darkGreak: #6c757d;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Kaushan Script", cursive;
+  font-size: 19px;
+}
+
+@mixin mq($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
