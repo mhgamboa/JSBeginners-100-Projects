@@ -10,10 +10,10 @@ Project 4 10/1/2020 - 10/2/2020
 
 #### From here on out I will also be rebuilding the HTML & CSS, not just the app.js file
 
-Project 5 10/2/2020 - 10/6/2020
+Project 5 10/2/2020 - 10/6/2020 **BUILT CSS AS WELL\***
 
-Project 6 10/7/2020 - 10/19/2020
+Project 6 10/7/2020 - 10/19/2020 **BUILT CSS AS WELL\***
 
-Project 7 10/20/2020 - 10/22/2020
+Project 7 10/20/2020 - 10/22/2020 **BUILT CSS AS WELL\***
 
-Project 8 - 10/22/2020 - ??/??/2020
+Project 8 - 10/22/2020 - 11/20/2020
