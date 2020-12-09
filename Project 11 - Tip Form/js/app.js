@@ -1,145 +1,99 @@
-//Things I learned: How to dynamically include options into an HTML form
-//Things I changed: I created two functions to handle input. One for errors. One for calculating the tip.
-//I broke out the feedback into three different feeds. Before, all three would show for just one error.
-//Added a validator to only calculate if feedback wasn't received.
-//Added a toFixed method to the output
-// Made input disappear after submitting
-//Bug. I had setInterval in my code instead of setTimeout. 
+let billTotal = document.querySelector("#input-bill");
+let totalPeople = document.querySelector("#input-users");
+var feedback = document.querySelector(".feedback");
 
-(function(){
-  
-//Set up a service array
-const services = [{
-  value: 1,
-  title: "great - 20%"
-},{
-  value: 2,
-  title: "good - 10%"
-},{
-  value: 3,
-  title: "bad - 2%"
-}]
+//User Tip options
 
+const services = [
+  {
+    title: "Great - 20%",
+    value: 0.2,
+  },
+  {
+    title: "Good - 10%",
+    value: 0.1,
+  },
+  {
+    title: "Bad - 2%",
+    value: 0.02,
+  },
+];
 
-  
-  const validateInput = function(billAmount, numUsers, selectedService){
-    
-   let isFeedback = false;
-   const feedback = document.querySelector('.feedback');
-    feedback.innerHTML = '';
+//Allow user to select tip Ammount
+const serviceValue = document.querySelector("#input-service");
 
-     if  (billAmount === "" || billAmount <="0"){
-        feedback.classList.add('showItem', 'alert-danger');
-        feedback.innerHTML += `<p>Bill amount cannot be blank</p>`
-        isFeedback = true;
-    }
-    
-    if (numUsers <= "0"){
-      feedback.classList.add('showItem', 'alert-danger');
-      feedback.innerHTML += `<p>Number of users must be greater than zero</p>`;
-       isFeedback = true;
-    } 
-    
-   if (selectedService === "0"){
-     feedback.classList.add('showItem', 'alert-danger');
-     feedback.innerHTML += `<p>You must select a Service</p>`
-      isFeedback = true;
-   }
-    
-    setTimeout(function(){
-      feedback.classList.remove('showItem', 'alert-danger');
-    }, 10000);
-    
-    return isFeedback;
-      
-  }; // end validateInput
-  
-  const calculateTip = function(billAmount, numUsers, selectedService) {
-   
-    let percentTip = '';
-    if (selectedService === "1"){
-      percentTip = 0.2;
-    } else if (selectedService === "2"){
-      percentTip = 0.1;
-    } else {
-      percentTip = 0.02;
-    }
-    
-    const tipAmount = Number(billAmount)*percentTip;
-    const totalAmount = Number(billAmount) + Number(tipAmount);
-    const eachPerson = Number(totalAmount) / Number(numUsers);
-    
-    return [tipAmount, totalAmount, eachPerson];
-   
-    
-  };
-  
- //FORM SETUP - ADD SERVICES
-services.forEach(function(service){
-  //create the option element
-  const option = document.createElement('option');
+services.forEach((service) => {
+  let option = document.createElement("option");
   option.textContent = service.title;
   option.value = service.value;
-  //select the select element from the DOM
-  const select = document.querySelector('#input-service');
-  select.appendChild(option);
-})
-  
- //FORM SETUP - ADD EVENT LISTENER AND FUNCTION CALLS
-  const inputForm = document.querySelector('form');
-  inputForm.addEventListener('submit', function(e){
-    
+  serviceValue.appendChild(option);
+});
+
+//Submit Button functionality
+
+const calculateButton = document.querySelector(".submitBtn");
+
+calculateButton.addEventListener("click", (e) => {
   e.preventDefault();
-   
-  //grab elements from the DOM
-  const inputBill = document.querySelector('#input-bill');
-  const inputUsers = document.querySelector('#input-users');
-  const serviceValue = document.querySelector('#input-service');
- 
-   //get values from DOM elements
-  let billAmount = inputBill.value;
-  let  numUsers = inputUsers.value;
-  let selectedService = serviceValue.value;
-    
-  //get feedback if info is not validated  
-  const isFeedback = validateInput(billAmount, numUsers, selectedService);
-    
-    
-    
-   //calculated tip if info was validated
-    if (!isFeedback){
-        const loader = document.querySelector('.loader');
-        const resultsDOM = document.querySelector('.results');
-        const tipResultsDOM = document.querySelector('#tip-amount');
-        const totalAmountDOM = document.querySelector('#total-amount');
-        const eachPersonDOM = document.querySelector('#person-amount');
-      
-       //calculate results
-        const results = calculateTip(billAmount, numUsers, selectedService);
-       //show loader  
-       loader.classList.add('showItem');
-       // show results after 2 seconds
-       setTimeout(function(){
-        loader.classList.remove('showItem');
-        tipResultsDOM.textContent= `${results[0].toFixed(2)}`
-        totalAmountDOM.textContent= `${results[1].toFixed(2)}`
-        eachPersonDOM.textContent= `${results[2].toFixed(2)}`
-        resultsDOM.classList.add('showItem');
-      },2000)
-      
-      //clear values from DOM elements after 5 seconds
-      setTimeout(function(){
-        inputBill.value = '';
-        inputUsers.value = '';
-        serviceValue.value = 0;
-        resultsDOM.classList.remove('showItem');
-      }, 10000)
+  //Start the feedback from a clean slate in case an error was previously made
+  feedback.innerHTML = "";
+  // If something is wrong add it to the Alert box
+  if (billTotal.value <= 0) {
+    addToAlert("Bill Cannot Be Blank");
+  }
+  if (totalPeople.value <= 0) {
+    addToAlert("Number Of Users Must Be Greater Than Zero");
+  }
+  if (serviceValue.value <= 0) {
+    addToAlert("You Must Select A Service");
+  }
+  // If anything is in the Alert box, show the alert Box for 5000ms
+  if (feedback.innerHTML) {
+    feedback.classList.add("showItem", "alert-danger");
+    setTimeout(() => {
+      feedback.classList.remove("showItem", "alert-danger");
+    }, 5000);
+  } else {
+    //If Everything is right split the bill + tip among everyone
+    calculateBill(
+      Number(billTotal.value),
+      Number(totalPeople.value),
+      Number(serviceValue.value)
+    );
+  }
+});
 
+//Functions for calculate button
+const addToAlert = (text) => {
+  let div = document.createElement("div");
+  div.textContent = text;
+  feedback.appendChild(div);
+};
 
-    } //end isFeedback statement
-  
-  }); //end eventListener for form
-  
-  
-})();
+const calculateBill = (bill, numPeople, serviceQuality) => {
+  let resultsContainer = document.querySelector(".results");
+  const loaderGif = document.querySelector(".loader");
 
+  let tip = bill * serviceQuality;
+  let billTotal = tip + bill;
+  let individualAmount = billTotal / numPeople;
+
+  //Add the tip, bill, and individual person cost to their spots in the html
+  document.querySelector("#tip-amount").textContent = tip.toFixed(2);
+  document.querySelector("#total-amount").textContent = billTotal.toFixed(2);
+  document.querySelector(
+    "#person-amount"
+  ).textContent = individualAmount.toFixed(2);
+
+  //Once calculate "Load" the results after 3000ms
+  loaderGif.classList.add("showItem");
+
+  setTimeout(() => {
+    loader.classList.remove("showItem");
+    resultsContainer.classList.add("showItem");
+  }, 3000);
+
+  setTimeout(() => {
+    resultsContainer.classList.remove("showItem");
+  }, 10000);
+};

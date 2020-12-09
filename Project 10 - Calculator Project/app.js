@@ -10,7 +10,7 @@ const buttons = document.querySelectorAll(".btn");
 const screen = document.querySelector(".screen");
 const numberButtons = document.querySelectorAll(".num-button");
 let screenLength = 0;
-let mathOperator;
+let mathOperator = null;
 let [x, y] = [0, 0];
 
 // Click on Number/decimal button and display on screen
@@ -25,6 +25,10 @@ const symbolButtons = document.querySelectorAll(".symbol-button");
 
 symbolButtons.forEach((symbolButton) => {
   symbolButton.addEventListener("click", () => {
+    if (mathOperator) {
+      y = Number(screen.value.slice(screenLength));
+      screen.value = solve(x, y, mathOperator);
+    }
     x = Number(screen.value);
     screen.value = screen.value.concat(symbolButton.dataset.num);
     screenLength = screen.value.length;
@@ -38,6 +42,7 @@ const clearButton = document.querySelector(".btn-clear");
 clearButton.addEventListener("click", (e) => {
   screen.value = "";
   [x, y] = [0, 0];
+  mathOperator = null;
 });
 
 //Solve Equation When Equal Button is Pressed
