@@ -1,4 +1,4 @@
-//add an eventListener to the from
+/*//add an eventListener to the from
 const form = document.querySelector('#itemForm'); // select form
 const itemInput = document.querySelector('#itemInput'); // select input box from form
 const itemList = document.querySelector('.item-list');
@@ -108,8 +108,23 @@ clearButton.addEventListener('click', function(){
     localStorage.clear();
     getList(todoItems);
 })
+*/
 
+(function () {
+  //Submit the form
+  const form = document.querySelector("#itemForm");
+  const itemContainer = document.querySelector(".item-container");
+  const itemList = document.querySelector(".item-list");
+  const userInput = document.querySelector("#itemInput");
 
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let item = userInput.value;
+    itemList.insertAdjacentHTML(
+      "beforeend",
+      `<div class="item my-3"><h5 class="item-name text-capitalize">${item}</h5><div class="item-icons"><a href="#" class="complete-item mx-2 item-icon"><i class="far fa-check-circle"></i></a><a href="#" class="edit-item mx-2 item-icon"><i class="far fa-edit"></i></a><a href="#" class="delete-item item-icon"><i class="far fa-times-circle"></i></a></div></div>`
+    );
+  });
 
-  
-
+  const clearButton = document.querySelector("#clear-list");
+})();
